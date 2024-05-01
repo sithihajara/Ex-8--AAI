@@ -1,7 +1,7 @@
- <H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+ <H3>ENTER YOUR NAME:SITHI HAJARA I</H3>
+<H3>ENTER YOUR REGISTER NO:212221230102</H3>
 <H3>EX. NO.8</H3>
-<H3>DATE:</H3>
+<H3>DATE:01.05.2024</H3>
 <H1 ALIGN =CENTER>Implementation of Speech Recognition</H1>
 <H3>Aim:</H3> 
  To implement the conversion of live speech to text.<BR>
@@ -22,9 +22,38 @@ Step 11: Perform speech recognition with exceptional handling:<Br>
 •	A generic exception block captures any other unexpected errors.<Br>
 <H3>Program:</H3>
 
-Insert your code her
 
-<H3> Output:</H3>
-Show the results here
+import pyaudio
+import speech_recognition as sr
 
+# initialize the Recognizer
+r = sr.Recognizer()
+
+#Set duration for audio capture
+duration = 10
+
+#Record audio
+print("Say Something")
+
+# USe the default microphone as the audio source
+with sr.Microphone() as source:
+    audio_data = r.listen(source, timeout=duration)
+
+try:
+    text = r.recognize_google(audio_data)
+    print("you said:",text)
+except sr.UnknownValueError:
+    print("Sorry, could not understand audio")
+except sr.RequestError as e:
+    print(f'Error with the request to Google Speech Recognition Service: {e}')
+except Exception as e:
+    print(f'Error: {e}')
+    
+<H3> Output:<H3></H3>
+![326167857-16ea6943-3ef4-449b-84a4-0acb5fb5e11d](https://github.com/sithihajara/Ex-8--AAI/assets/94219582/5f5e14e5-c5a6-485e-a686-24ea2f06258f)
+
+
+![326167913-0246b676-4345-40fe-a177-1db4cdbc1734](https://github.com/sithihajara/Ex-8--AAI/assets/94219582/557aaf94-f319-4a04-bde0-69bf833143ff)
+</H3>
 <H3> Result:</H3>
+Thus, we have implemented a program that will transcribe the audio file in the file variable and print the transcribed text on the console, one line at a time.
